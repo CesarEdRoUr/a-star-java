@@ -1,4 +1,4 @@
-package aStar;
+package aStar.heuristics;
 
 public interface AStarHeuristic {
 

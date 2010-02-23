@@ -1,6 +1,5 @@
 package aStar.heuristics;
 
-import aStar.AStarHeuristic;
 
 /**
  * A heuristic that uses the tile that is closest to the target
@@ -12,10 +11,11 @@ public class ClosestHeuristic implements AStarHeuristic {
 		float dx = goalX - startX;
 		float dy = goalY - startY;
 		
-		//float result = (float) (Math.sqrt((dx*dx)+(dy*dy)));
-		//Optimization! Changed to Manhattan distance:
+		float result = (float) (Math.sqrt((dx*dx)+(dy*dy)));
 		
-		float result = (float) (dx*dx)+(dy*dy);
+		//Optimization! Changed to distance^2 distance: (but looks more "ugly")
+		
+		//float result = (float) (dx*dx)+(dy*dy);
 		
 		
 		return result;

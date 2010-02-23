@@ -3,6 +3,7 @@ package aStar;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import aStar.heuristics.AStarHeuristic;
 import aStar.utils.Logger;
 
 public class AStar {
@@ -112,7 +113,7 @@ public class AStar {
 					System.out.print("X");
 				} else if (node.isStart) {
 					System.out.print("s");
-				} else if (node.isStart) {
+				} else if (node.isGoal) {
 					System.out.print("g");
 				} else if (shortestPath.contains(node.getX(), node.getY())) {
 					System.out.print("¤");
