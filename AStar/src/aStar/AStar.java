@@ -109,7 +109,7 @@ public class AStar {
 		for(int x=0; x<map.getMapWith(); x++) {
 
 			if (x==0) {
-				for (int i=0; i<=map.getMapWith(); i++)
+				for (int i=0; i<=map.getMapHeight(); i++)
 					System.out.print("-");
 				System.out.println();	
 			}
@@ -135,7 +135,7 @@ public class AStar {
 			System.out.print("|");
 			System.out.println();
 		}
-		for (int i=0; i<=map.getMapWith(); i++)
+		for (int i=0; i<=map.getMapHeight(); i++)
 			System.out.print("-");
 	}
 
