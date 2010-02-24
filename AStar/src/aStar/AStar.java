@@ -102,6 +102,8 @@ public class AStar {
 		return null;
 	}
 
+	
+	
 	public void printPath() {
 		Node node;
 		for(int x=0; x<map.getMapWith(); x++) {

@@ -36,7 +36,7 @@ public class AreaMap {
 				node = new Node(x,y);
 				if (obstacleMap[x][y] == 1)
 					node.setObstical(true);
-				map.get(x).add(new Node(x,y));
+				map.get(x).add(node);
 			}
 		}
 	}
@@ -122,9 +122,9 @@ public class AreaMap {
 	public float getDistanceBetween(Node node1, Node node2) {
 		//if the nodes are on top or next to each other, return 1
 		if (node1.getX() == node2.getX() || node1.getY() == node2.getY()){
-			return 1;
+			return 1*(mapHeight+mapWith);
 		} else { //if they are diagonal to each other return diagonal distance: sqrt(1^2+1^2)
-			return (float) Math.sqrt(2);
+			return (float) 1.7*(mapHeight+mapWith);
 		}
 	}
 	
