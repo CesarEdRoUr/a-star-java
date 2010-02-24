@@ -13,12 +13,14 @@ public class AreaMap {
 	private int startLocationY = 0;
 	private int goalLocationX = 0;
 	private int goalLocationY = 0;
+	private int[][] obstacleMap;
 
 	private Logger log = new Logger();
 	
-	AreaMap(int mapWith, int mapHeight) {
+	AreaMap(int mapWith, int mapHeight, int[][] obstacleMap) {
 		this.mapWith = mapWith;
 		this.mapHeight = mapHeight;
+		this.obstacleMap = obstacleMap;
 		
 		createMap();
 		log.addToLog("\tMap Created");
@@ -26,10 +28,14 @@ public class AreaMap {
 		log.addToLog("\tMap Node edges registered");
 	}
 	private void createMap() {
+		Node node;
 		map = new ArrayList<ArrayList<Node>>();
 		for (int x=0; x<mapWith; x++) {
 			map.add(new ArrayList<Node>());
 			for (int y=0; y<mapHeight; y++) {
+				node = new Node(x,y);
+				if (obstacleMap[x][y] == 1)
+					node.setObstical(true);
 				map.get(x).add(new Node(x,y));
 			}
 		}

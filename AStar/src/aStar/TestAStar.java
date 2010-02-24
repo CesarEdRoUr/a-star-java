@@ -7,13 +7,34 @@ import aStar.utils.StopWatch;
 
 public class TestAStar {
 	
-	private static int mapWith = 100;
-	private static int mapHeight = 100;
+	private static int mapWith = 20;
+	private static int mapHeight = 20;
 	
-	private static int startX = 91;
-	private static int startY = 97;
-	private static int goalX = 14;
-	private static int goalY = 7;
+	private static int[][] obstacleMap =   {{0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0},
+											{0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,1,0},
+											{0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,1,0,0},
+											{0,0,0,0,1,1,0,0,1,0,0,0,0,0,0,1,1,0,0,0},
+											{0,1,1,1,1,0,0,1,1,0,0,0,0,0,1,1,0,0,0,0},
+											{0,0,0,0,0,0,0,1,0,0,0,0,0,1,1,0,0,0,0,0},
+											{1,1,1,1,1,1,1,1,0,0,0,0,1,1,0,0,0,0,0,0},
+											{0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0},
+											{0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0},
+											{0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0},
+											{0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0},
+											{0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0},
+											{0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0},
+											{0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0},
+											{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+											{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+											{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+											{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+											{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+											{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}};
+	
+	private static int startX = 0;
+	private static int startY = 1;
+	private static int goalX = 19;
+	private static int goalY = 15;
 	
 	
 	public static void main(String[] args) {
@@ -22,7 +43,7 @@ public class TestAStar {
 		s.start();
 		
 		log.addToLog("Map initializing...");
-		AreaMap map = new AreaMap(mapWith, mapHeight);
+		AreaMap map = new AreaMap(mapWith, mapHeight, obstacleMap);
 		
 		log.addToLog("Heuristic initializing...");
 		AStarHeuristic heuristic = new ClosestHeuristic();
