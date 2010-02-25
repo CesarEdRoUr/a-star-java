@@ -1,4 +1,4 @@
-package aStar.heuristics;
+package CDIO.pathFinder.heuristics;
 
 
 /**

@@ -1,10 +1,10 @@
-package aStar;
+package CDIO.pathFinder;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
-import aStar.heuristics.AStarHeuristic;
-import aStar.utils.Logger;
+import CDIO.pathFinder.heuristics.AStarHeuristic;
+import CDIO.pathFinder.utils.Logger;
 
 public class AStar {
 	private AreaMap map;
@@ -21,7 +21,7 @@ public class AStar {
 	private Path shortestPath;
 	Logger log = new Logger();
 
-	AStar(AreaMap map, AStarHeuristic heuristic) {
+	public AStar(AreaMap map, AStarHeuristic heuristic) {
 		this.map = map;
 		this.heuristic = heuristic;
 
@@ -100,43 +100,6 @@ public class AStar {
 
 		}
 		return null;
-	}
-
-	
-	
-	public void printPath() {
-		Node node;
-		for(int x=0; x<map.getMapWith(); x++) {
-
-			if (x==0) {
-				for (int i=0; i<=map.getMapHeight(); i++)
-					System.out.print("-");
-				System.out.println();	
-			}
-			System.out.print("|");
-
-			for(int y=0; y<map.getMapHeight(); y++) {
-				node = map.getNode(x, y);
-				if (node.isObstacle) {
-					System.out.print("X");
-				} else if (node.isStart) {
-					System.out.print("s");
-				} else if (node.isGoal) {
-					System.out.print("g");
-				} else if (shortestPath.contains(node.getX(), node.getY())) {
-					System.out.print("¤");
-				} else {
-					System.out.print(" ");
-				}
-				if (y==map.getMapHeight())
-					System.out.print("_");
-			}
-
-			System.out.print("|");
-			System.out.println();
-		}
-		for (int i=0; i<=map.getMapHeight(); i++)
-			System.out.print("-");
 	}
 
 	private Path reconstructPath(Node node) {

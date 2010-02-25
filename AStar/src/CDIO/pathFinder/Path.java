@@ -1,4 +1,4 @@
-package aStar;
+package CDIO.pathFinder;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package aStar.utils;
+package CDIO.pathFinder.utils;
 
 public class Logger {
 	public void addToLog(String s) {

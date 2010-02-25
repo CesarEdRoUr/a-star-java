@@ -1,10 +1,14 @@
-package aStar;
+package CDIO.pathFinder.tests;
 
-import aStar.heuristics.AStarHeuristic;
-import aStar.heuristics.ClosestHeuristic;
-import aStar.heuristics.DiagonalHeuristic;
-import aStar.utils.Logger;
-import aStar.utils.StopWatch;
+import CDIO.pathFinder.AStar;
+import CDIO.pathFinder.AreaMap;
+import CDIO.pathFinder.Path;
+import CDIO.pathFinder.graphics.PrintMap;
+import CDIO.pathFinder.heuristics.AStarHeuristic;
+import CDIO.pathFinder.heuristics.ClosestHeuristic;
+import CDIO.pathFinder.heuristics.DiagonalHeuristic;
+import CDIO.pathFinder.utils.Logger;
+import CDIO.pathFinder.utils.StopWatch;
 
 public class TestAStar {
 	
@@ -53,13 +57,14 @@ public class TestAStar {
 		
 		log.addToLog("Calculating shortest path...");
 		s.start();
-		pathFinder.calcShortestPath(startX, startY, goalX, goalY);
+		Path shortestPath = pathFinder.calcShortestPath(startX, startY, goalX, goalY);
+		
 		s.stop();
 		
 		log.addToLog("Time to calculate path in milliseconds: " + s.getElapsedTime());
 		
 		log.addToLog("Printing map of shortest path...");
-		pathFinder.printPath();
+		new PrintMap(map, shortestPath);
 	}
 
 }

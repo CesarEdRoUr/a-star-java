@@ -1,4 +1,4 @@
-package aStar;
+package CDIO.pathFinder;
 
 import java.util.ArrayList;
 
@@ -20,9 +20,10 @@ public class Node implements Comparable<Node> {
 	Node previousNode;
 	int x;
 	int y;
-	boolean isObstacle;
-	boolean isStart;
-	boolean isGoal;
+	public boolean isObstacle;
+	public boolean isStart;
+	public boolean isGoal;
+	public boolean isPath;
 	
 	Node(int x, int y) {
 		neighborList = new ArrayList<Node>();
@@ -232,6 +233,14 @@ public class Node implements Comparable<Node> {
 
 	public void setGoal(boolean isGoal) {
 		this.isGoal = isGoal;
+	}
+
+	public boolean isPath() {
+		return isPath;
+	}
+
+	public void setPath(boolean isPath) {
+		this.isPath = isPath;
 	}
 
 	public boolean equals(Node node) {

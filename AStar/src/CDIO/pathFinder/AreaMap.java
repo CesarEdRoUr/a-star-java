@@ -1,8 +1,8 @@
-package aStar;
+package CDIO.pathFinder;
 
 import java.util.ArrayList;
 
-import aStar.utils.Logger;
+import CDIO.pathFinder.utils.Logger;
 
 public class AreaMap {
 
@@ -13,11 +13,21 @@ public class AreaMap {
 	private int startLocationY = 0;
 	private int goalLocationX = 0;
 	private int goalLocationY = 0;
-	private int[][] obstacleMap;
+	private int[][] obstacleMap = {{0}};
 
 	private Logger log = new Logger();
 	
-	AreaMap(int mapWith, int mapHeight, int[][] obstacleMap) {
+	public AreaMap(int mapWith, int mapHeight) {
+		this.mapWith = mapWith;
+		this.mapHeight = mapHeight;
+		
+		createMap();
+		log.addToLog("\tMap Created");
+		registerEdges();
+		log.addToLog("\tMap Node edges registered");
+	}
+	
+	public AreaMap(int mapWith, int mapHeight, int[][] obstacleMap) {
 		this.mapWith = mapWith;
 		this.mapHeight = mapHeight;
 		this.obstacleMap = obstacleMap;

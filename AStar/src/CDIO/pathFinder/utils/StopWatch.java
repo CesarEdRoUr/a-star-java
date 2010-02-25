@@ -1,4 +1,4 @@
-package aStar.utils;
+package CDIO.pathFinder.utils;
 
 /*
     Copyright (c) 2005, Corey Goldberg
