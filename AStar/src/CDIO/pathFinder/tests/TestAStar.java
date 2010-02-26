@@ -12,8 +12,8 @@ import CDIO.pathFinder.utils.StopWatch;
 
 public class TestAStar {
 	
-	private static int mapWith = 320;
-	private static int mapHeight = 240;
+	private static int mapWith = 20;
+	private static int mapHeight = 20;
 	
 	private static int[][] obstacleMap =   {{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0},
 											{0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,1,0},
@@ -31,15 +31,15 @@ public class TestAStar {
 											{0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0},
 											{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 											{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-											{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-											{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-											{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-											{0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1}};
+											{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+											{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+											{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+											{0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1}};
 	
 	private static int startX = 0;
 	private static int startY = 1;
-	private static int goalX = 319;
-	private static int goalY = 239;
+	private static int goalX = 16;
+	private static int goalY = 18;
 	
 	
 	public static void main(String[] args) {

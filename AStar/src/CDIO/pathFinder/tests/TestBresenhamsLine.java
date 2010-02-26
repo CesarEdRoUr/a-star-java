@@ -30,6 +30,12 @@ public class TestBresenhamsLine {
 		s.stop();
 		log.addToLog("Generation took " + s.getElapsedTime() + " ms");
 		
+		String str = "";
+		for (Point point : line) {
+			str = str+"("+point.x+","+point.y+") ";
+		}
+		log.addToLog("Line is:" + str);
+		
 		log.addToLog("Writing line to map...");
 		for(Point point : line) {
 			map.setObstical(point.x, point.y, true);
