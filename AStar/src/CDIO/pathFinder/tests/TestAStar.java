@@ -52,12 +52,12 @@ public class TestAStar {
 		log.addToLog("Heuristic initializing...");
 		AStarHeuristic heuristic = new DiagonalHeuristic();
 		
-		log.addToLog("Pathfinder initializing...");
-		AStar pathFinder = new AStar(map, heuristic);
+		log.addToLog("AStar initializing...");
+		AStar aStar = new AStar(map, heuristic);
 		
 		log.addToLog("Calculating shortest path...");
 		s.start();
-		Path shortestPath = pathFinder.calcShortestPath(startX, startY, goalX, goalY);
+		Path shortestPath = aStar.calcShortestPath(startX, startY, goalX, goalY);
 		
 		s.stop();
 		
