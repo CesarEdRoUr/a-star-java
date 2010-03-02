@@ -41,7 +41,7 @@ public class TestBresenhamsLine {
 			map.setObstical(point.x, point.y, true);
 		}
 		log.addToLog("Printing map...");
-		new PrintMap(map, null);
+		new PrintMap(map, new ArrayList<Point>());
 		
 	}
 

@@ -1,5 +1,6 @@
 package CDIO.pathFinder;
 
+import java.awt.Point;
 import java.util.ArrayList;
 
 public class Path {
@@ -13,8 +14,12 @@ public class Path {
 		return waypoints.size();
 	}
 
-	public Node getWayPoint(int index) {
+	public Node getWayPointNode(int index) {
 		return waypoints.get(index);
+	}
+	
+	public Point getWayPoint(int index) {
+		return new Point(waypoints.get(index).getX(), waypoints.get(index).getY());
 	}
 
 	/**
@@ -24,7 +29,7 @@ public class Path {
 	 * @return The x coordinate at the waypoint.
 	 */
 	public int getX(int index) {
-		return getWayPoint(index).getX();
+		return getWayPointNode(index).getX();
 	}
 
 	/**
@@ -34,7 +39,7 @@ public class Path {
 	 * @return The y coordinate at the waypoint.
 	 */
 	public int getY(int index) {
-		return getWayPoint(index).getY();
+		return getWayPointNode(index).getY();
 	}
 
 	/**
