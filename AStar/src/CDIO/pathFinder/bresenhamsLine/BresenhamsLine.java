@@ -4,7 +4,11 @@ import java.awt.Point;
 import java.util.ArrayList;
 
 public class BresenhamsLine {
-	public static ArrayList<Point> getPointsOnLine(Point a, Point b) {
+	public static ArrayList<Point> getPointsOnLine(Point p1, Point p2) {
+		
+		Point a = (Point) p1.clone();
+		Point b = (Point) p2.clone();
+		
 		ArrayList<Point> pointsOnLine = new ArrayList<Point>();
 		
 		boolean steep = Math.abs(b.y - a.y) > Math.abs(b.x - a.x);

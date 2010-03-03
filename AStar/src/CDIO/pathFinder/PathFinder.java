@@ -43,6 +43,9 @@ public class PathFinder {
 	private ArrayList<Point> calculateWayPoints(Path shortestPath) {
 		ArrayList<Point> waypoints = new ArrayList<Point>();
 		
+		shortestPath.prependWayPoint(map.getStartNode());
+		shortestPath.appendWayPoint(map.getGoalLocation());
+		
 		Point p1 = shortestPath.getWayPoint(0);
 		int p1Number = 0;
 		waypoints.add(p1);

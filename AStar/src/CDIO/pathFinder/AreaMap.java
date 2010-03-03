@@ -45,7 +45,7 @@ public class AreaMap {
 			for (int y=0; y<mapHeight; y++) {
 				node = new Node(x,y);
 				try {
-					if (obstacleMap[x][y] == 1)
+					if (obstacleMap[y][x] == 1)
 						node.setObstical(true);
 				} catch (Exception e) {}
 				map.get(x).add(node);
@@ -131,6 +131,7 @@ public class AreaMap {
 		return map.get(goalLocationX).get(goalLocationY);
 	}
 	
+	
 	public float getDistanceBetween(Node node1, Node node2) {
 		//if the nodes are on top or next to each other, return 1
 		if (node1.getX() == node2.getX() || node1.getY() == node2.getY()){
@@ -146,6 +147,7 @@ public class AreaMap {
 	public int getMapHeight() {
 		return mapHeight;
 	}
+	
 	public void clear() {
 		startLocationX = 0;
 		startLocationY = 0;
