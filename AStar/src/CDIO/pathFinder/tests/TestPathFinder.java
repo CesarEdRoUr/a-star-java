@@ -10,13 +10,14 @@ import CDIO.pathFinder.graphics.PrintMap;
 import CDIO.pathFinder.heuristics.AStarHeuristic;
 import CDIO.pathFinder.heuristics.DiagonalHeuristic;
 import CDIO.pathFinder.utils.Logger;
+import CDIO.pathFinder.utils.StopWatch;
 
 /*
  * Hvorfor virker det ikke???
  */
 public class TestPathFinder {
-	private static int mapWith = 20;
-	private static int mapHeight = 20;
+	private static int mapWith = 640;
+	private static int mapHeight = 480;
 	
 	private static int[][] obstacleMap =   {{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0},
 											{0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,1,0},
@@ -47,6 +48,9 @@ public class TestPathFinder {
 	
 	public static void main(String[] args) {
 		Logger log = new Logger();
+		StopWatch s = new StopWatch();
+		
+		s.start();
 		
 		log.addToLog("Map initializing...");
 		AreaMap map = new AreaMap(mapWith, mapHeight, obstacleMap);
@@ -55,6 +59,9 @@ public class TestPathFinder {
 		
 		PathFinder pathfinder = new PathFinder();
 		ArrayList<Point> optimizedWaypoints = pathfinder.getWaypoints(map);
+		
+		s.stop();
+		log.addToLog("Total pathfinding took: " + s.getElapsedTime() + " ms");
 		
 		log.addToLog("Printing map of optimized path...");
 		new PrintMap(map, optimizedWaypoints);

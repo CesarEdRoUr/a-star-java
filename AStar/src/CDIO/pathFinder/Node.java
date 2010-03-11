@@ -1,5 +1,6 @@
 package CDIO.pathFinder;
 
+import java.awt.Point;
 import java.util.ArrayList;
 
 public class Node implements Comparable<Node> {
@@ -209,6 +210,10 @@ public class Node implements Comparable<Node> {
 
 	public void setY(int y) {
 		this.y = y;
+	}
+	
+	public Point getPoint() {
+		return new Point(x,y);
 	}
 	
 	public boolean isObstical() {

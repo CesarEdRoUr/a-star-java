@@ -28,8 +28,8 @@ public class PathFinder {
 		log.addToLog("Calculating shortest path with AStar...");
 		Path shortestPath = aStar.calcShortestPath(map.getStartLocationX(), map.getStartLocationY(), map.getGoalLocationX(), map.getGoalLocationY());
 		
-		log.addToLog("Printing map of shortest path...");
-		new PrintMap(map, shortestPath);
+		//log.addToLog("Printing map of shortest path...");
+		//new PrintMap(map, shortestPath);
 		
 		log.addToLog("Calculating optimized waypoints...");
 		s.start();
@@ -44,7 +44,7 @@ public class PathFinder {
 		ArrayList<Point> waypoints = new ArrayList<Point>();
 		
 		shortestPath.prependWayPoint(map.getStartNode());
-		shortestPath.appendWayPoint(map.getGoalLocation());
+		shortestPath.appendWayPoint(map.getGoalNode());
 		
 		Point p1 = shortestPath.getWayPoint(0);
 		int p1Number = 0;

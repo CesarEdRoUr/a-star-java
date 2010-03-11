@@ -1,9 +1,16 @@
 package CDIO.pathFinder;
 
+import java.awt.Point;
 import java.util.ArrayList;
 
 import CDIO.pathFinder.utils.Logger;
 
+/**
+ * The AreaMap holds information about the With, Height, 
+ * Start position, Goal position and Obstacles on the map.
+ * A place on the map is referred to by it's (x,y) coordinates, 
+ * where (0,0) is the upper left corner, and x is horizontal and y is vertical.
+ */
 public class AreaMap {
 
 	private int mapWith;
@@ -17,6 +24,12 @@ public class AreaMap {
 
 	private Logger log = new Logger();
 	
+	/**
+	 * Class constructor specifying the With and Height of a otherwise empty map.
+	 * (no start and goal location or obstacles)
+	 * @param mapWith
+	 * @param mapHeight
+	 */
 	public AreaMap(int mapWith, int mapHeight) {
 		this.mapWith = mapWith;
 		this.mapHeight = mapHeight;
@@ -27,16 +40,28 @@ public class AreaMap {
 		log.addToLog("\tMap Node edges registered");
 	}
 	
+	/**
+	 * Class constructor specifying the With, Height and Obstacles of the map.
+	 * (no start and goal location)
+	 * The Obstacle 2D array map can be any With and Height
+	 * @param mapWith		the with of the map as int
+	 * @param mapHeight		the Height of the map as int
+	 * @param obstacleMap	a 2D int array map of the obstacles on the map. '1' is obstacle, '0' is not.
+	 */
 	public AreaMap(int mapWith, int mapHeight, int[][] obstacleMap) {
 		this.mapWith = mapWith;
 		this.mapHeight = mapHeight;
 		this.obstacleMap = obstacleMap;
-		
 		createMap();
 		log.addToLog("\tMap Created");
 		registerEdges();
 		log.addToLog("\tMap Node edges registered");
 	}
+	
+	/**
+	 * Sets up the Nodes of the map with the With and Height specified in the constructor
+	 * or set methods.
+	 */
 	private void createMap() {
 		Node node;
 		map = new ArrayList<ArrayList<Node>>();
@@ -55,6 +80,7 @@ public class AreaMap {
 
 	/**
 	 * Registers the nodes edges (connections to its neighbors).
+	 * @see Node
 	 */
 	private void registerEdges() {
 		for ( int x = 0; x < mapWith-1; x++ ) {
@@ -85,7 +111,7 @@ public class AreaMap {
 	public ArrayList<ArrayList<Node>> getNodes() {
 		return map;
 	}
-	public void setObstical(int x, int y, boolean isObstical) {
+	public void setObstacle(int x, int y, boolean isObstical) {
 		map.get(x).get(y).setObstical(isObstical);
 	}
 
@@ -127,11 +153,26 @@ public class AreaMap {
 		return goalLocationY;
 	}
 	
-	public Node getGoalLocation() {
+	public Point getGoalPoint() {
+		return new Point(goalLocationX, goalLocationY);
+	}
+	
+	/**
+	 * @return Node	The Goal Node
+	 * @see Node
+	 */
+	public Node getGoalNode() {
 		return map.get(goalLocationX).get(goalLocationY);
 	}
 	
-	
+	/**
+	 * Determine the distance between two neighbor Nodes 
+	 * as used by the AStar algorithm.
+	 * 
+	 * @param node1 any Node
+	 * @param node2 any of Node1's neighbors
+	 * @return Float - the distance between the two neighbors
+	 */
 	public float getDistanceBetween(Node node1, Node node2) {
 		//if the nodes are on top or next to each other, return 1
 		if (node1.getX() == node2.getX() || node1.getY() == node2.getY()){
@@ -148,6 +189,10 @@ public class AreaMap {
 		return mapHeight;
 	}
 	
+	/**
+	 * Removes all the map information about start location, goal location and obstacles.
+	 * Then remakes the map with the original With and Height. 
+	 */
 	public void clear() {
 		startLocationX = 0;
 		startLocationY = 0;

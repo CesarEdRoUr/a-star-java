@@ -1,15 +1,17 @@
 package CDIO.pathFinder.heuristics;
 
+import java.awt.Point;
+
 /**
  * Calculate the diagonal distance to goal when 
  * a straight step costs 1 and diagonal step costs sqrt(2).
  */
 public class DiagonalHeuristic implements AStarHeuristic {
 
-	public float getEstimatedDistanceToGoal(int startX, int startY, int goalX, int goalY) {		
+	public float getEstimatedDistanceToGoal(Point start, Point goal) {		
 		
-		float h_diagonal = (float) Math.min(Math.abs(startX-goalX), Math.abs(startY-goalY));
-		float h_straight = (float) (Math.abs(startX-goalX) + Math.abs(startY-goalY));
+		float h_diagonal = (float) Math.min(Math.abs(start.x-goal.x), Math.abs(start.y-goal.y));
+		float h_straight = (float) (Math.abs(start.x-goal.x) + Math.abs(start.y-goal.y));
 		float h_result = (float) (Math.sqrt(2) * h_diagonal + (h_straight - 2*h_diagonal));
 		
 		/**

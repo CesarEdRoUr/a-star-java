@@ -24,7 +24,6 @@ public class AStar {
 	public AStar(AreaMap map, AStarHeuristic heuristic) {
 		this.map = map;
 		this.heuristic = heuristic;
-
 		closedList = new ArrayList<Node>();
 		openList = new SortedNodeList();
 	}
@@ -92,12 +91,11 @@ public class AStar {
 					if (neighborIsBetter) {
 						neighbor.setPreviousNode(current);
 						neighbor.setDistanceFromStart(neighborDistanceFromStart);
-						neighbor.setHeuristicDistanceFromGoal(heuristic.getEstimatedDistanceToGoal(neighbor.getX(), neighbor.getY(), map.getGoalLocationX(), map.getGoalLocationY()));
+						neighbor.setHeuristicDistanceFromGoal(heuristic.getEstimatedDistanceToGoal(neighbor.getPoint(), map.getGoalPoint()));
 					}
 				}
 
 			}
-
 		}
 		return null;
 	}

@@ -38,7 +38,7 @@ public class TestBresenhamsLine {
 		
 		log.addToLog("Writing line to map...");
 		for(Point point : line) {
-			map.setObstical(point.x, point.y, true);
+			map.setObstacle(point.x, point.y, true);
 		}
 		log.addToLog("Printing map...");
 		new PrintMap(map, new ArrayList<Point>());
