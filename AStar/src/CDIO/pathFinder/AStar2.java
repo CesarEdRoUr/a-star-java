@@ -7,7 +7,7 @@ import java.util.Collections;
 import CDIO.pathFinder.heuristics.AStarHeuristic;
 import CDIO.pathFinder.utils.Logger;
 
-public class AStar {
+public class AStar2 {
 	private AreaMap map;
 	private AStarHeuristic heuristic;
 	/**
@@ -18,7 +18,7 @@ public class AStar {
 	private ArrayList<Point> shortestPath;
 	Logger log = new Logger();
 
-	public AStar(AreaMap map, AStarHeuristic heuristic) {
+	public AStar2(AreaMap map, AStarHeuristic heuristic) {
 		this.map = map;
 		this.heuristic = heuristic;
 		closedList = new ArrayList<Node>();

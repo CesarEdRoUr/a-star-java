@@ -26,7 +26,7 @@ public class PathFinder {
 		AStar aStar = new AStar(map, heuristic);
 		
 		log.addToLog("Calculating shortest path with AStar...");
-		Path shortestPath = aStar.calcShortestPath(map.getStartLocationX(), map.getStartLocationY(), map.getGoalLocationX(), map.getGoalLocationY());
+		ArrayList<Point> shortestPath = aStar.calcShortestPath(map.getStartLocationX(), map.getStartLocationY(), map.getGoalLocationX(), map.getGoalLocationY());
 		
 		//log.addToLog("Printing map of shortest path...");
 		//new PrintMap(map, shortestPath);
@@ -40,31 +40,31 @@ public class PathFinder {
 		return waypoints;
 	}
 	
-	private ArrayList<Point> calculateWayPoints(Path shortestPath) {
+	private ArrayList<Point> calculateWayPoints(ArrayList<Point> shortestPath) {
 		ArrayList<Point> waypoints = new ArrayList<Point>();
 		
-		shortestPath.prependWayPoint(map.getStartNode());
-		shortestPath.appendWayPoint(map.getGoalNode());
+		shortestPath.add(0,map.getStartNode().getPoint());
+		shortestPath.add(map.getGoalNode().getPoint());
 		
-		Point p1 = shortestPath.getWayPoint(0);
+		Point p1 = shortestPath.get(0);
 		int p1Number = 0;
 		waypoints.add(p1);
 		
-		Point p2 = shortestPath.getWayPoint(1);
+		Point p2 = shortestPath.get(1);
 		int p2Number = 1;
 		
-		while(!p2.equals(shortestPath.getWayPoint(shortestPath.getLength()-1))) {
+		while(!p2.equals(shortestPath.get(shortestPath.size()-1))) {
 			if(lineClear(p1, p2)) {
 				//make p2 the next point in the path
 				p2Number++;
-				p2 = shortestPath.getWayPoint(p2Number);
+				p2 = shortestPath.get(p2Number);
 			} else {
 				p1Number = p2Number-1;
-				p1 = shortestPath.getWayPoint(p1Number);
+				p1 = shortestPath.get(p1Number);
 				waypoints.add(p1);
 				log.addToLog("Got waypoint: " + p1.toString());
 				p2Number++;
-				p2 = shortestPath.getWayPoint(p2Number);
+				p2 = shortestPath.get(p2Number);
 			}
 		}
 		waypoints.add(p2);
