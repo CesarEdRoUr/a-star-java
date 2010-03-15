@@ -36,8 +36,6 @@ public class AreaMap {
 		
 		createMap();
 		log.addToLog("\tMap Created");
-		registerEdges();
-		log.addToLog("\tMap Node edges registered");
 	}
 	
 	/**
@@ -54,8 +52,6 @@ public class AreaMap {
 		this.obstacleMap = obstacleMap;
 		createMap();
 		log.addToLog("\tMap Created");
-		registerEdges();
-		log.addToLog("\tMap Node edges registered");
 	}
 	
 	/**
@@ -68,7 +64,7 @@ public class AreaMap {
 		for (int x=0; x<mapWith; x++) {
 			map.add(new ArrayList<Node>());
 			for (int y=0; y<mapHeight; y++) {
-				node = new Node(x,y);
+				node = new Node(x,y,this);
 				try {
 					if (obstacleMap[y][x] == 1)
 						node.setObstical(true);
@@ -77,36 +73,6 @@ public class AreaMap {
 			}
 		}
 	}
-
-	/**
-	 * Registers the nodes edges (connections to its neighbors).
-	 * @see Node
-	 */
-	private void registerEdges() {
-		for ( int x = 0; x < mapWith-1; x++ ) {
-			for ( int y = 0; y < mapHeight-1; y++ ) {
-				Node node = map.get(x).get(y);
-				if (!(y==0))
-					node.setNorth(map.get(x).get(y-1));
-				if (!(y==0) && !(x==mapWith))
-					node.setNorthEast(map.get(x+1).get(y-1));
-				if (!(x==mapWith))
-					node.setEast(map.get(x+1).get(y));
-				if (!(x==mapWith) && !(y==mapHeight))
-					node.setSouthEast(map.get(x+1).get(y+1));
-				if (!(y==mapHeight))
-					node.setSouth(map.get(x).get(y+1));
-				if (!(x==0) && !(y==mapHeight))
-					node.setSouthWest(map.get(x-1).get(y+1));
-				if (!(x==0))
-					node.setWest(map.get(x-1).get(y));
-				if (!(x==0) && !(y==0))
-					node.setNorthWest(map.get(x-1).get(y-1));
-			}
-		}
-	}
-	
-	
 
 	public ArrayList<ArrayList<Node>> getNodes() {
 		return map;
@@ -199,6 +165,5 @@ public class AreaMap {
 		goalLocationX = 0;
 		goalLocationY = 0;
 		createMap();
-		registerEdges();
 	}
 }

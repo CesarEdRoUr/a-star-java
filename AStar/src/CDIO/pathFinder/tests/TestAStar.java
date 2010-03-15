@@ -139,8 +139,8 @@ public class TestAStar {
 	
 	private static int startX = 50;
 	private static int startY = 12;
-	private static int goalX = 158;
-	private static int goalY = 110;
+	private static int goalX = 110;
+	private static int goalY = 75;
 	
 	
 	public static void main(String[] args) {
@@ -151,6 +151,7 @@ public class TestAStar {
 		AreaMap map = new AreaMap(mapWith, mapHeight, obstacleMap);
 		
 		log.addToLog("Heuristic initializing...");
+		//AStarHeuristic heuristic = new ClosestHeuristic();
 		AStarHeuristic heuristic = new DiagonalHeuristic();
 		
 		log.addToLog("AStar initializing...");
